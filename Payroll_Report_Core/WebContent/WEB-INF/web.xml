@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>Payroll_Report_Core</display-name>
+  <servlet>
+    <servlet-name>PayrollReportGeneration</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <init-param>
+      <param-name>jersey.config.server.provider.packages</param-name>
+      <param-value>com.svi.payroll.reports.webservice;</param-value>
+    </init-param>
+    <init-param>
+      <param-name>jersey.config.server.provider.classnames</param-name>
+      <param-value>org.glassfish.jersey.media.multipart.MultiPartFeature</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PayrollReportGeneration</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+  <context-param>
+    <param-name>SSSXmlPath</param-name>
+    <param-value>/WEB-INF/config/SSS.xml</param-value>
+  </context-param>
+  <context-param>
+    <param-name>ReportIniPath</param-name>
+    <param-value>/WEB-INF/config/Report.ini</param-value>
+  </context-param>
+  <context-param>
+    <param-name>REPORT_RESOURCES_IMAGES</param-name>
+    <param-value>/WEB-INF/ReportResources/FormImages/</param-value>
+  </context-param>
+  <context-param>
+    <param-name>REPORT_RESOURCES_TEMPLATES</param-name>
+    <param-value>/WEB-INF/ReportResources/JasperTemplates/</param-value>
+  </context-param>
+  <context-param>
+    <param-name>PayrollSummaryConfig</param-name>
+    <param-value>/WEB-INF/config/payroll.summary.properties</param-value>
+  </context-param>
+</web-app>
